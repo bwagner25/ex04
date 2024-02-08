@@ -1,26 +1,25 @@
 import java.util.*;
-
 import static java.lang.Double.parseDouble;
 
-public class Main {
+public class Main{
     public static Scanner input = new Scanner(System.in);
-    public static void main(String[] args) {
+    public static void main(String[] args){
         ArrayList<String> cities = new ArrayList<>();
         Map<String,Double> citiesAndTemps = new HashMap<>();
-        System.out.println("What is the first city?");
-        String userInputCity = input.nextLine();
-        while(!(userInputCity.equals("END"))){
-            addCity(cities, userInputCity);
-            System.out.println("What is the next city?");
-            userInputCity = input.nextLine();
-        }
-        for(int i = 0; i < cities.size(); i++) {
+        makeCityList(cities);
+        for(int i = 0; i < cities.size(); i++){
             addToMap(cities.get(i),getCityAvg(cities, i), citiesAndTemps);
         }
         System.out.println(citiesAndTemps);
     }
-    static void addCity(ArrayList<String> a,String city){
-        a.add(city);
+    static void makeCityList(ArrayList<String> a){
+        System.out.println("What is the first city?");
+        String userInputCity = input.nextLine();
+        while(!(userInputCity.equals("END"))) {
+            a.add(userInputCity);
+            System.out.println("What is the next city?");
+            userInputCity = input.nextLine();
+        }
     }
     static double getCityAvg(ArrayList<String> a,int i){
         System.out.println("What is Monday's temperature for " + a.get(i) + "?");

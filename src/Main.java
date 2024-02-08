@@ -6,7 +6,7 @@ public class Main {
     public static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         ArrayList<String> cities = new ArrayList<>();
-        Map<String,Integer> citiesAndTemps = new HashMap<>();
+        Map<String,Double> citiesAndTemps = new HashMap<>();
         System.out.println("What is the first city?");
         String userInputCity = input.nextLine();
         while(!(userInputCity.equals("END"))){
@@ -19,11 +19,10 @@ public class Main {
         }
         System.out.println(citiesAndTemps);
     }
-    static ArrayList addCity(ArrayList a,String city){
+    static void addCity(ArrayList<String> a,String city){
         a.add(city);
-        return a;
     }
-    static double getCityAvg(ArrayList a,int i){
+    static double getCityAvg(ArrayList<String> a,int i){
         System.out.println("What is Monday's temperature for " + a.get(i) + "?");
         double temp1 = parseDouble(input.nextLine());
         System.out.println("What is Tuesday's temperature for " + a.get(i) + "?");
@@ -34,11 +33,9 @@ public class Main {
         double temp4 = parseDouble(input.nextLine());
         System.out.println("What is Friday's temperature for " + a.get(i) + "?");
         double temp5 = parseDouble(input.nextLine());
-        double avgTemp = (temp1 + temp2 + temp3 + temp4 + temp5)/5;
-        return avgTemp;
+        return ((temp1 + temp2 + temp3 + temp4 + temp5)/5);
     }
-    static Map addToMap(String a,Double b, Map c){
+    static void addToMap(String a,Double b, Map<String,Double> c){
         c.put(a,b);
-        return c;
     }
 }
